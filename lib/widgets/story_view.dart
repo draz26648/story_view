@@ -117,7 +117,11 @@ class StoryItem {
     return StoryItem(
       Container(
         key: key,
-        color: Colors.black,
+        
+        decoration: BoxDecoration(
+         color: Colors.black,
+         borderRadius: BorderRadius.circular(16),
+        ),
         child: Stack(
           children: <Widget>[
             StoryImage.url(
@@ -148,7 +152,7 @@ class StoryItem {
                           ),
                           textAlign: TextAlign.center,
                         )
-                      : SizedBox(),
+                      : SizedBox.shrink(),
                 ),
               ),
             )
@@ -180,7 +184,10 @@ class StoryItem {
         child: Container(
           color: Colors.grey[100],
           child: Container(
+           decoration: BoxDecoration(
             color: Colors.black,
+            borderRadius: BorderRadius.circular(16),
+          ),
             child: Stack(
               children: <Widget>[
                 StoryImage.url(
@@ -229,7 +236,10 @@ class StoryItem {
     return StoryItem(
         Container(
           key: key,
-          color: Colors.black,
+          decoration: BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.circular(16),
+          ),
           child: Stack(
             children: <Widget>[
               StoryVideo.url(
@@ -277,7 +287,10 @@ class StoryItem {
     return StoryItem(
         Container(
           key: key,
-          color: Colors.black,
+         decoration: BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.circular(16),
+          ),
           child: Stack(
             children: <Widget>[
               Center(
@@ -622,8 +635,11 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
     return Container(
       color: Colors.white,
       child: Stack(
-        children: <Widget>[
-          _currentView,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: _currentView,
+          ),
           Visibility(
             visible: widget.progressPosition != ProgressPosition.none,
             child: Align(
@@ -814,7 +830,7 @@ class StoryProgressIndicator extends StatelessWidget {
 
   StoryProgressIndicator(
     this.value, {
-    this.indicatorHeight = 5,
+    this.indicatorHeight = 4,
     this.indicatorColor,
     this.indicatorForegroundColor,
   });
@@ -826,7 +842,7 @@ class StoryProgressIndicator extends StatelessWidget {
         this.indicatorHeight,
       ),
       foregroundPainter: IndicatorOval(
-        this.indicatorForegroundColor?? Colors.white.withOpacity(0.8),
+        this.indicatorForegroundColor?? Colors.white,
         this.value,
       ),
       painter: IndicatorOval(
